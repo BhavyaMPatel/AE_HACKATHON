@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import jwtDecode from 'jwt-decode';
 import Navbar from '../component/Navbar';
 
-export default function RequestPage() {
-
-  const [User,SetUser]=useState('Welcome');
-
+export default function ApprovalPage() {
+  
   useEffect(() => {
     const token =localStorage.getItem('token');
     if(token){
@@ -15,7 +13,7 @@ export default function RequestPage() {
         localStorage.removeItem('token')
         window.location.href='/'
       }
-      if(user.type.localeCompare("Requester")!=0){ //Not An Requester
+      if(user.type.localeCompare("Approver")!=0){ //Not An Approver
         localStorage.removeItem('token')
         window.location.href='/'
       }
@@ -26,8 +24,8 @@ export default function RequestPage() {
 
   return (
     <>
-    <Navbar User={User} />
-    <div className='mt-20 font-Poppins'>requester come</div>
+    <Navbar User={User}/>
+    <div>ApprovalPage</div>
     </>
-  ) 
+  )
 }

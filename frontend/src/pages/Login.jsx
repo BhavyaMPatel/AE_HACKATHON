@@ -33,18 +33,23 @@ async function LoginFunction(e){
     }
 
     console.log("HI");
+    console.log(data);
+ 
     if(data.login.type.localeCompare("Admin")==0){
         console.log("HI");
+        localStorage.setItem('token',data.token);
+        window.location.href="/Admin";
+    }
+
+    if(data.login.type.localeCompare("Requester")==0){
+        localStorage.setItem('token',data.token);
         window.location.href="/Requester";
     }
 
-    // if(data.userid){
-    // localStorage.setItem('token',data.token);
-    // window.location.href="/BuyBook";
-    // }else if(data.error){
-    //     const error=document.querySelector('#error')
-    //     error.textContent=data.error
-    // }
+    if(data.login.type.localeCompare("Approver")==0){
+        localStorage.setItem('token',data.token);
+        window.location.href="/Approval";
+    }
 
 }
 

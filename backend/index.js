@@ -38,7 +38,8 @@ app.post('/login',async(req,res)=>{
 
     try{
         const login=await User.login(userid,password);
-        res.status(200).json({userid,login});
+        const token=createToken(userid,login.type);
+        res.status(200).json({userid,login,token});
     }catch(err){
         res.status(400).json({error:err.message});
     }

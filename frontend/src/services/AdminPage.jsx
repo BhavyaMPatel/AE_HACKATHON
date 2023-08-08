@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import jwtDecode from 'jwt-decode';
 import Navbar from '../component/Navbar';
 
-export default function RequestPage() {
-
+export default function AdminPage() {
   const [User,SetUser]=useState('Welcome');
 
   useEffect(() => {
@@ -15,7 +14,7 @@ export default function RequestPage() {
         localStorage.removeItem('token')
         window.location.href='/'
       }
-      if(user.type.localeCompare("Requester")!=0){ //Not An Requester
+      if(user.type.localeCompare("Admin")!=0){ //Not An Admin Then
         localStorage.removeItem('token')
         window.location.href='/'
       }
@@ -26,8 +25,8 @@ export default function RequestPage() {
 
   return (
     <>
-    <Navbar User={User} />
-    <div className='mt-20 font-Poppins'>requester come</div>
+    <Navbar User={User}/>
+    <div>AdminPage</div>
     </>
-  ) 
+  )
 }

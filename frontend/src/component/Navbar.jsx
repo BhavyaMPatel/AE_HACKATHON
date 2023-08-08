@@ -1,5 +1,5 @@
 import React from 'react'
-export default function Navbar() {
+export default function Navbar({User}) {
 
   async function Navigation(){
     const menu=document.querySelector("#menu");
@@ -19,10 +19,10 @@ export default function Navbar() {
         <div className="hidden w-full md:flex md:items-center md:w-auto font-thin" id="menu">
             <ul className=" m-3 pt-4 text-xl gap-0 text-black md:flex md:justify-between md:pt-0 md:m-0 ">
                 <li>
-                    <a className="md:p-4 py-2 block font-Inter text-blue-500 font-thin " href="/">WelCome</a>
+                    <a className="md:p-4 py-2 block font-Inter text-blue-500 font-thin " href="/">{User}</a>
                 </li>
                 <li>
-                    <a className="md:p-4 py-2 block hover:text-blue-400 text-blue-500 font-Inter font-thin" href="/VartaLap_Room">Request</a>
+                    <a className="md:p-4 py-2 block hover:text-blue-400 text-blue-500 font-Inter font-thin" href="/">Request</a>
                 </li>
             </ul>
         </div>
