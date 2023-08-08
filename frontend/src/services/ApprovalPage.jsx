@@ -3,7 +3,8 @@ import jwtDecode from 'jwt-decode';
 import Navbar from '../component/Navbar';
 
 export default function ApprovalPage() {
-  
+  const [User,SetUser]=useState('Welcome');
+
   useEffect(() => {
     const token =localStorage.getItem('token');
     if(token){
@@ -25,7 +26,16 @@ export default function ApprovalPage() {
   return (
     <>
     <Navbar User={User}/>
-    <div>ApprovalPage</div>
+    <div className='p-2 flex flex-wrap font-Poppins justify-center items-center mt-20'>
+        <div onClick={()=>{SetTicketValue()}} className='p-2 w-1/2 flex justify-center items-center font-Poppins border-2 border-solid border-blue-400 rounded-sm active:bg-blue-50 border-r-white'>
+            Upcoming Request
+        </div>
+        <div onClick={()=>{UnSetTicket()}} className='p-2 w-1/2 flex justify-center items-center font-Poppins  border-2 border-solid border-blue-400 rounded-sm active:bg-blue-50 '>
+            Past History
+        </div>
+    </div>
+
+
     </>
   )
 }
