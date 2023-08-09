@@ -25,10 +25,12 @@ export default function CreateTicket({UserId}) {
         formData.append("Description",Description);
         formData.append("image",Src);
         console.log(formData);
+        
         const response = await fetch('http://localhost:4000/uploadquery',{
         method: 'POST',
         body: formData
         })
+
         const data = await response.json();
         console.log(data);
         if(data.status){

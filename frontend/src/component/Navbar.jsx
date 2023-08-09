@@ -6,6 +6,11 @@ export default function Navbar({User}) {
     menu.classList.toggle('hidden');
   }
 
+  function LogoutFun(){
+    localStorage.removeItem('token');
+    window.location.reload();
+  }
+
   return (
     <>
     <nav className="shadow-md border-gray-100 border-b-2 flex flex-wrap justify-start items-center md:justify-end  w-full py-4 md:p-2  text-gray-700  fixed z-0 opacity-90 bg-slate-50 top-0">
@@ -22,7 +27,7 @@ export default function Navbar({User}) {
                     <a className="md:p-4 py-2 block font-Inter text-blue-500 font-thin " href="/">{User}</a>
                 </li>
                 <li>
-                    <a className="md:p-4 py-2 block hover:text-blue-400 text-blue-500 font-Inter font-thin" href="/">Request</a>
+                    <a onClick={LogoutFun} className="md:p-4 py-2 block hover:text-blue-400 text-blue-500 font-Inter font-thin" href="#">Logout</a>
                 </li>
             </ul>
         </div>

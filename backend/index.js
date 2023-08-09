@@ -118,6 +118,16 @@ app.post('/reject',function(req, res){
     });
 })
 
+app.post('/addworkflow',async function(req, res){
+    try{
+        await Flow.create({name:req.body.Description});
+        res.status(200).json({status:"Done"});
+    }catch(err){
+        res.status(400).json({error:"Error"});
+    }
+
+})
+
 //Listen
 app.listen(PORT, () => {
   console.log(`Application live on localhost:${PORT}`);

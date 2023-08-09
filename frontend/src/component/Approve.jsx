@@ -3,6 +3,7 @@ import ImageCom from './ImageCom';
 export default function Approve({UserId}) {
 const [Data,SetData] = useState([]);
 const [userid,Setuserid] = useState('');
+const [empty,Setempty] = useState(false);
 const [name,Setname] = useState('');
 useEffect(()=>{
     fetch('http://localhost:4000/querydata')
@@ -32,6 +33,7 @@ async function Approve(userid){
     })
     const data=await responce.json()
     console.log(data)
+    window.location.reload();
 }
 
 async function Reject(userid){
@@ -46,7 +48,9 @@ async function Reject(userid){
     })
     const data=await responce.json()
     console.log(data)
+    window.location.reload()
 }
+
 
 return (
     <>
@@ -66,8 +70,10 @@ return (
                     <button onClick={()=>{Approve(item.userid)}} className='m-2 bg-green-500 font-Poppins text-white p-2 rounded-md hover:bg-green-600'>Approve</button>
                     <button onClick={()=>{Reject(item.userid)}} className='m-2 bg-red-500 font-Poppins text-white p-2 rounded-md hover:bg-red-600'>Reject</button>
                     </>:null
-                )):null}
+                )):<><div>Nothing To Display</div></>}
     </div>
+
+
 
     <dialog id="image">
         <div className='flex justify-end m-2'>

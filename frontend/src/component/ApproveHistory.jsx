@@ -24,7 +24,7 @@ export default function ApproveHistory() {
 
 return (
     <>
-    <div className='m-2 font-Poppins text-lg'>History</div>
+    <div className='m-2 font-Poppins text-lg'>Approve And Rejection History</div>
 
     <div className='p-2 flex flex-wrap font-Poppins justify-center items-center '>
         <div onClick={()=>{SetApproveValue()}} className='p-2 w-1/2 flex justify-center items-center font-Poppins border-2 border-solid border-blue-400 rounded-sm active:bg-blue-50 border-r-white'>
