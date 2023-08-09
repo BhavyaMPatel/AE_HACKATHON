@@ -34,7 +34,7 @@ async function Approve(id){
     const data=await responce.json()
     if(data.status){
         alert("Approved");
-        window.location.reload();
+        window.location.href('/')
     }else{
         alert("Error Occur");
     }

@@ -24,7 +24,7 @@ export default function CheckTicketStatus({UserId}) {
         <div key={item._id} className='font-Poppins text-xl border-2 border-solid border-blue-200 rounded-md p-2 hover:p-3 bg-blue-50'>
           <div className=''>{item._id}</div>
           <div className=''>{item.description}</div>
-          {item.status=="active" ? <div className='font-Poppins text-orange-400'>{item.status}</div>:<div className='font-Poppins text-green-400'>{item.status}</div>}
+          {item.status=="active" ? <div className='font-Poppins text-orange-400'>{item.status}</div>:<div className='font-Poppins text-blue-400'>{item.status}</div>}
         </div>
             )):<div className='font-Poppins text-xl text-green-400'>No Active Request !</div>}
     </div>
