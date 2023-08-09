@@ -95,6 +95,29 @@ app.get('/uploadquery/:userid', function(req, res){
 })
 })
 
+app.get('/querydata', function(req, res){
+    Post.find({}).then((post)=>{
+        res.status(200).json({Post:post})
+})
+})
+
+app.get('/image/:userid/:name', function(req, res){
+    const filePath = 'D:/AE_HACKATHON/backend/uploads/'+req.params.name;
+    res.sendFile(filePath);
+})
+
+app.post('/approve',function(req, res){
+    Post.findOneAndUpdate({userid:req.body.userid},{status:"approve"}).then((doc)=>{
+        res.status(200).json({status:"success"})
+    });
+})
+
+app.post('/reject',function(req, res){
+    Post.findOneAndUpdate({userid:req.body.userid},{status:"rejected"}).then((doc)=>{
+        res.status(200).json({status:"success"})
+    });
+})
+
 //Listen
 app.listen(PORT, () => {
   console.log(`Application live on localhost:${PORT}`);
