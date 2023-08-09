@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 export default function Workflow() {
 
 const [Description,SetDescription] = useState('');
-const [Category,SelectCategory] = useState('');
 
 var formData = new FormData();
 

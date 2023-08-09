@@ -101,6 +101,18 @@ app.get('/querydata', function(req, res){
 })
 })
 
+app.get('/approvenumber', function(req, res){
+    Post.count({status:"approve"}).then((count)=>{
+        res.status(200).json({count})
+})
+})
+
+app.get('/rejectnumber', function(req, res){
+    Post.count({status:"rejected"}).then((count)=>{
+        res.status(200).json({count})
+})
+})
+
 app.get('/image/:userid/:name', function(req, res){
     const filePath = 'D:/AE_HACKATHON/backend/uploads/'+req.params.name;
     res.sendFile(filePath);

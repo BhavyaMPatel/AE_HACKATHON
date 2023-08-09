@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import jwtDecode from 'jwt-decode';
 import Navbar from '../component/Navbar';
 import Workflow from '../component/Workflow';
+import ApproveHistory from '../component/ApproveHistory';
+import DashBoardC from '../component/DashBoard';
 export default function AdminPage() {
   const [User,SetUser]=useState('Welcome');
   const [WorkFlow,SetWorkFlow]=useState(true);
@@ -59,10 +61,8 @@ export default function AdminPage() {
     </div>
 
      {WorkFlow ? <Workflow/> : null}
-     {/*
-    {DashBoard ? null : null}
-    {History ? null : null} */}
-
+     {DashBoard ? <ApproveHistory/> : null}
+     {History ? <DashBoardC/> : null} 
     </>
   )
 }
