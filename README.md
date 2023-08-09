@@ -32,6 +32,15 @@ GET API
 4 . /rejectnumber - Return Total Rejected Request Number
 5 . /image/:userid/:name -Return Uploaded Image
 6 . /uploadquery/:userid -Return Request of Perticular User
+
+POST API
+
+1 . /login         - Login User
+2 . /uploadquery   - Upload Request
+3 . /approve       - Approve The Request
+4 . /reject        - Reject The Request
+5 . /addworkflow   - Add New Workflow
+
 ```
 
 
