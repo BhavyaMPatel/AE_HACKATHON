@@ -21,34 +21,42 @@ function setfun(userid,name){
     image.showModal();
 }
 
-async function Approve(userid){
+async function Approve(id){
     const responce = await fetch('http://localhost:4000/approve',{
         method: 'POST',
         headers:{
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            userid,
+            id,
         }),
     })
     const data=await responce.json()
-    console.log(data)
-    window.location.reload();
+    if(data.status){
+        alert("Approved");
+        window.location.reload();
+    }else{
+        alert("Error Occur");
+    }
 }
 
-async function Reject(userid){
+async function Reject(id){
     const responce = await fetch('http://localhost:4000/reject',{
         method: 'POST',
         headers:{
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            userid,
+            id,
         }),
     })
     const data=await responce.json()
-    console.log(data)
-    window.location.reload()
+    if(data.status){
+        alert("Rejected Succesfully !");
+        window.location.reload();
+    }else{
+        alert("Error Occur");
+    }
 }
 
 
@@ -67,10 +75,10 @@ return (
                                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                     </svg></button>
                     </div>
-                    <button onClick={()=>{Approve(item.userid)}} className='m-2 bg-green-500 font-Poppins text-white p-2 rounded-md hover:bg-green-600'>Approve</button>
-                    <button onClick={()=>{Reject(item.userid)}} className='m-2 bg-red-500 font-Poppins text-white p-2 rounded-md hover:bg-red-600'>Reject</button>
+                    <button onClick={()=>{Approve(item._id)}} className='m-2 bg-green-500 font-Poppins text-white p-2 rounded-md hover:bg-green-600'>Approve</button>
+                    <button onClick={()=>{Reject(item._id)}} className='m-2 bg-red-500 font-Poppins text-white p-2 rounded-md hover:bg-red-600'>Reject</button>
                     </>:null
-                )):<><div>Nothing To Display</div></>}
+                )):null}
     </div>
 
 

@@ -16,7 +16,7 @@ return (
     <>
         <div className='justify-center items-center bg-red-300 w-1/6 rounded-md p-2'>
             <div className='font-Poppins flex justify-center items-center text-red-600'>
-                Total Number Of Approved Requests
+                Total Number Of Rejected Requests
             </div>
             <div className='flex justify-start items-center'>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 text-red-600">

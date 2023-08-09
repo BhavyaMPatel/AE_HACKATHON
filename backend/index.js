@@ -119,13 +119,14 @@ app.get('/image/:userid/:name', function(req, res){
 })
 
 app.post('/approve',function(req, res){
-    Post.findOneAndUpdate({userid:req.body.userid},{status:"approve"}).then((doc)=>{
+    Post.findOneAndUpdate({"_id":req.body.id},{"$set": {"status":"approve",approveDate:Date.now()}}).then((doc)=>{
+        console.log(doc);
         res.status(200).json({status:"success"})
     });
 })
 
 app.post('/reject',function(req, res){
-    Post.findOneAndUpdate({userid:req.body.userid},{status:"rejected"}).then((doc)=>{
+    Post.findOneAndUpdate({"_id":req.body.id},{"$set":{"status":"rejected",approveDate:Date.now()}}).then((doc)=>{
         res.status(200).json({status:"success"})
     });
 })
