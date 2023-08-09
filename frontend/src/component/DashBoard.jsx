@@ -1,6 +1,7 @@
 import React from 'react'
 import ApproveNumber from './ApproveNumber'
 import RejectNumber from './RejectNumber'
+import UserC from '../component/User';
 
 export default function DashBoard() {
   return (
@@ -10,6 +11,7 @@ export default function DashBoard() {
         <ApproveNumber/>
         <RejectNumber/>
     </div>
+    <UserC/>
     </>
 
   )

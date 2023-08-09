@@ -56,6 +56,49 @@ app.get('/', async (req, res) => {
     res.send("Backend Server Of RequestResolver");
 });
 
+app.get('/workflow',async(req,res)=>{
+    Flow.find({}).then((flow)=>{
+            res.status(200).json({Flow:flow})
+    })
+});
+
+
+app.get('/querydata', function(req, res){
+    Post.find({}).then((post)=>{
+        res.status(200).json({Post:post})
+})
+})
+
+app.get('/approvenumber', function(req, res){
+    Post.count({status:"approve"}).then((count)=>{
+        res.status(200).json({count})
+})
+})
+
+app.get('/rejectnumber', function(req, res){
+    Post.count({status:"rejected"}).then((count)=>{
+        res.status(200).json({count})
+})
+})
+
+app.get('/image/:userid/:name', function(req, res){
+    const filePath = 'D:/AE_HACKATHON/backend/uploads/'+req.params.name;
+    res.sendFile(filePath);
+})
+
+app.get('/uploadquery/:userid', function(req, res){
+    Post.find({userid:req.params.userid}).then((post)=>{
+        res.status(200).json({Post:post})
+})
+})
+
+app.get('/users', function(req, res){
+    User.find({}).then((users)=>{
+        console.log(users)
+        res.status(200).json({User:users})
+    })
+})
+
 app.post('/login',async(req,res)=>{
     
     const {userid,password}=req.body;
@@ -70,11 +113,6 @@ app.post('/login',async(req,res)=>{
     
 })
 
-app.get('/workflow',async(req,res)=>{
-    Flow.find({}).then((flow)=>{
-            res.status(200).json({Flow:flow})
-    })
-});
 
 app.post('/uploadquery',upload.single('image'),async(req,res)=>{
     //Assume Query Never Deleted Only Status Will Change
@@ -103,34 +141,8 @@ app.post('/uploadquery',upload.single('image'),async(req,res)=>{
 
 })
 
-app.get('/uploadquery/:userid', function(req, res){
-    Post.find({userid:req.params.userid}).then((post)=>{
-        res.status(200).json({Post:post})
-})
-})
 
-app.get('/querydata', function(req, res){
-    Post.find({}).then((post)=>{
-        res.status(200).json({Post:post})
-})
-})
 
-app.get('/approvenumber', function(req, res){
-    Post.count({status:"approve"}).then((count)=>{
-        res.status(200).json({count})
-})
-})
-
-app.get('/rejectnumber', function(req, res){
-    Post.count({status:"rejected"}).then((count)=>{
-        res.status(200).json({count})
-})
-})
-
-app.get('/image/:userid/:name', function(req, res){
-    const filePath = 'D:/AE_HACKATHON/backend/uploads/'+req.params.name;
-    res.sendFile(filePath);
-})
 
 app.post('/approve',function(req, res){
     Post.findOneAndUpdate({"_id":req.body.id},{"$set": {"status":"approve",approveDate:Date.now()}}).then((doc)=>{
