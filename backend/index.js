@@ -4,11 +4,25 @@
 const express = require("express");
 const app = express()
 const mongoose = require('mongoose');
+const cors = require("cors")
 const User=require('./model/user');
 const Flow=require('./model/workflow');
 const Post=require('./model/post');
 const fs=require('fs');
 const multer = require('multer');
+
+const whitelist = ["http://localhost:5173"]
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error("Not allowed by CORS"))
+    }
+  },
+  credentials: true,
+}
+app.use(cors(corsOptions))
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

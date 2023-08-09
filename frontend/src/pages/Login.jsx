@@ -14,6 +14,7 @@ async function LoginFunction(e){
 
     const responce = await fetch('http://localhost:4000/login',{
         method: 'POST',
+        mode: 'cors',
         headers:{
             'Content-Type': 'application/json',
         },
